@@ -13,7 +13,7 @@ namespace WindowsFormsApp3
     {
         public void LoginAction(string username, string password)
         {
-            SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDb)\MSSQLLocalDB;Integrated Security=True");
+            SqlConnection sqlcon = new SqlConnection(@"Data Source=housebase.database.windows.net;Initial Catalog=HuizenMarkt;User ID=nhlandriesvdsluis;Password=********;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             string query = "Select * from Login where username = '" + username + "'and password = '" + password + "'";
             SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
             DataTable dtbl = new DataTable();
