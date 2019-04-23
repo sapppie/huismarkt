@@ -37,7 +37,7 @@ namespace WindowsFormsApp3
                 da.Fill(dt);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    ListViewItem street = new ListViewItem(dr["Street"].ToString()+dr["HouseNR"].ToString()+dr["City"].ToString()+dr["PostCode"].ToString());
+                    ListViewItem street = new ListViewItem(dr["Street"].ToString()+" "+dr["HouseNR"].ToString() + " " + dr["City"].ToString() + " " + dr["PostCode"].ToString());
                     //ListViewItem housenr = new ListViewItem(dr["HouseNR"].ToString());
                     //ListViewItem city = new ListViewItem(dr["City"].ToString());
                     //ListViewItem postcode = new ListViewItem(dr["PostCode"].ToString());
