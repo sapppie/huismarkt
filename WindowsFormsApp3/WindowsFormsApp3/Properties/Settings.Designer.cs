@@ -27,7 +27,7 @@ namespace WindowsFormsApp3.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=housebase.database.windows.net;Initial Catalog=HuizenMarkt;User ID=nh" +
-            "landriesvdsluis;Password=********;Connect Timeout=30;Encrypt=True;TrustServerCer" +
+            "landriesvdsluis;Password=Welkom!2;Connect Timeout=30;Encrypt=True;TrustServerCer" +
             "tificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")]
         public string LocalSQLServer {
             get {

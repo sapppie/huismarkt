@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,13 +38,42 @@ namespace WindowsFormsApp3
                 {
                     imgLoc = dlg.FileName.ToString();
                     housePic.ImageLocation = imgLoc;
-                https://www.youtube.com/watch?v=BqyAAGMfTD8
+                //https://www.youtube.com/watch?v=BqyAAGMfTD8
                 }
             }
-            catch
+            catch(Exception ex)
             {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                byte[] img = null;
+                FileStream fs = new FileStream(imgLoc, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+                img = br.ReadBytes((int)fs.Length);
+                string sql = "INSERT INTO Houses(Street,Acres,HouseNR,Rooms,Garage,Price,City,PostCode,YearOfBuilt,AboutHouse,SoortHuis,EnergyLable,GarageCapacity,Image)VALUES("+street.Text+",'"+acres.Text+"','"+housenr.Text+ "','" + rooms.Text+ "','" + garage.Text+ "','" + price.Text+ "','" + city.Text+ "','" + postcode.Text+ "','" + year.Text+ "','" + about.Text+ "','" + soorthuis.Text+ "','" + energielabel.Text+ "','" + garagecap.Text+ "',@img)";
+                if (conn.State != ConnectionState.Open)
+                    conn.Open();
+                command = new SqlCommand(sql, conn);
+                command.Parameters.Add(new SqlParameter("@img", img));
+                int x = command.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show(x.ToString() + " record(s) saved.");
 
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
