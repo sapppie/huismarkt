@@ -65,42 +65,43 @@
             this.acres.Location = new System.Drawing.Point(99, 39);
             this.acres.Name = "acres";
             this.acres.Size = new System.Drawing.Size(100, 20);
-            this.acres.TabIndex = 0;
+            this.acres.TabIndex = 1;
             // 
             // housenr
             // 
             this.housenr.Location = new System.Drawing.Point(99, 65);
             this.housenr.Name = "housenr";
             this.housenr.Size = new System.Drawing.Size(100, 20);
-            this.housenr.TabIndex = 1;
+            this.housenr.TabIndex = 2;
             // 
             // rooms
             // 
             this.rooms.Location = new System.Drawing.Point(99, 91);
             this.rooms.Name = "rooms";
             this.rooms.Size = new System.Drawing.Size(100, 20);
-            this.rooms.TabIndex = 2;
+            this.rooms.TabIndex = 3;
             // 
             // street
             // 
             this.street.Location = new System.Drawing.Point(99, 13);
             this.street.Name = "street";
             this.street.Size = new System.Drawing.Size(100, 20);
-            this.street.TabIndex = 1;
+            this.street.TabIndex = 0;
             // 
             // price
             // 
             this.price.Location = new System.Drawing.Point(99, 143);
             this.price.Name = "price";
             this.price.Size = new System.Drawing.Size(100, 20);
-            this.price.TabIndex = 4;
+            this.price.TabIndex = 5;
             // 
             // garage
             // 
             this.garage.Location = new System.Drawing.Point(99, 117);
             this.garage.Name = "garage";
             this.garage.Size = new System.Drawing.Size(100, 20);
-            this.garage.TabIndex = 5;
+            this.garage.TabIndex = 4;
+            this.garage.TextChanged += new System.EventHandler(this.Garage_TextChanged);
             // 
             // city
             // 
@@ -129,14 +130,14 @@
             this.about.Name = "about";
             this.about.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.about.Size = new System.Drawing.Size(100, 20);
-            this.about.TabIndex = 9;
+            this.about.TabIndex = 12;
             // 
             // soorthuis
             // 
             this.soorthuis.Location = new System.Drawing.Point(99, 247);
             this.soorthuis.Name = "soorthuis";
             this.soorthuis.Size = new System.Drawing.Size(100, 20);
-            this.soorthuis.TabIndex = 10;
+            this.soorthuis.TabIndex = 9;
             // 
             // garagecap
             // 
@@ -151,7 +152,7 @@
             this.energielabel.Location = new System.Drawing.Point(99, 273);
             this.energielabel.Name = "energielabel";
             this.energielabel.Size = new System.Drawing.Size(100, 20);
-            this.energielabel.TabIndex = 12;
+            this.energielabel.TabIndex = 10;
             // 
             // housePic
             // 
