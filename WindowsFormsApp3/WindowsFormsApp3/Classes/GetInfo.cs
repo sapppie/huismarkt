@@ -10,7 +10,7 @@ namespace WindowsFormsApp3
     class GetInfo
     {
         string query;
-        SqlConnection sqlcon = new SqlConnection(@"Data Source=housebase.database.windows.net;Initial Catalog=HuizenMarkt;User ID=nhlandriesvdsluis;Password=Welkom!2;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        SQLConn sQLConn = new SQLConn();
         House house = new House();
         public void getAdresses()
         {
@@ -21,14 +21,17 @@ namespace WindowsFormsApp3
         }
         public void getHouseInfo()
         {
+            SqlConnection conn = new SqlConnection(sQLConn.connstring());
             query = "";
-            SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+            SqlDataAdapter sda = new SqlDataAdapter(query, conn);
 
         }
         public string QueryGet(string obj)
         {
+            SqlConnection conn = new SqlConnection(sQLConn.connstring());
+
             string query = "Select '"+obj+"' from Houses ";
-            SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+            SqlDataAdapter sda = new SqlDataAdapter(query, conn);
             return query;
         }
     }

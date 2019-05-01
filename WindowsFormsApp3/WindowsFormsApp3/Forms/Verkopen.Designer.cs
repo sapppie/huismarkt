@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp3
 {
-    partial class AdminForm
+    partial class Verkopen
     {
         /// <summary>
         /// Required designer variable.
@@ -57,6 +57,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.housePic)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,19 +157,19 @@
             // 
             // housePic
             // 
-            this.housePic.Location = new System.Drawing.Point(205, 22);
+            this.housePic.Location = new System.Drawing.Point(205, 12);
             this.housePic.Name = "housePic";
-            this.housePic.Size = new System.Drawing.Size(583, 387);
+            this.housePic.Size = new System.Drawing.Size(583, 397);
             this.housePic.TabIndex = 13;
             this.housePic.TabStop = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(713, 415);
+            this.button1.Location = new System.Drawing.Point(632, 415);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 14;
-            this.button1.Text = "Send";
+            this.button1.Text = "Verzenden";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
@@ -176,9 +177,9 @@
             // 
             this.button2.Location = new System.Drawing.Point(205, 415);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(114, 23);
             this.button2.TabIndex = 15;
-            this.button2.Text = "Browse";
+            this.button2.Text = "Afbeelding uploaden";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
@@ -313,11 +314,22 @@
             this.label13.Text = "Garage capacity";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // AdminForm
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(713, 415);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 29;
+            this.button3.Text = "Terug";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            // 
+            // Verkopen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -347,8 +359,8 @@
             this.Controls.Add(this.rooms);
             this.Controls.Add(this.housenr);
             this.Controls.Add(this.acres);
-            this.Name = "AdminForm";
-            this.Text = "AdminForm";
+            this.Name = "Verkopen";
+            this.Text = "Verkopen";
             ((System.ComponentModel.ISupportInitialize)(this.housePic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -386,5 +398,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button button3;
     }
 }

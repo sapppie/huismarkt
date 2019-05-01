@@ -14,7 +14,6 @@ namespace WindowsFormsApp3
     public partial class LoginForm : Form
     {
         Login l = new Login();
-
         public LoginForm()
         {
             InitializeComponent();
@@ -24,7 +23,8 @@ namespace WindowsFormsApp3
             //Login l = new Login();
             string username = UserText.Text.Trim();
             string password = PassText.Text.Trim();
-            l.LoginAction(username,password);            
+            l.LoginAction(username,password,this);
+            
             //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDb)\MSSQLLocalDB;Integrated Security=True");
             //string query = "Select * from Login where username = '" + UserText.Text.Trim() + "'and password = '" + PassText.Text.Trim()+"'"; ;
             //SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
@@ -32,7 +32,7 @@ namespace WindowsFormsApp3
             //sda.Fill(dtbl);
             //if (dtbl.Rows.Count == 1)
             //{
-            //    FormMain objmain = new FormMain();
+            //    Kopen objmain = new Kopen();
             //    this.Hide();
             //    objmain.Show();
             //}
@@ -50,6 +50,13 @@ namespace WindowsFormsApp3
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            RegisterForm rf = new RegisterForm();
+            this.Hide();
+            rf.Show();
         }
     }
 }

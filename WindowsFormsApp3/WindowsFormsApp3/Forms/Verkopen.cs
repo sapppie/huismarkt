@@ -12,12 +12,13 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp3
 {
-    public partial class AdminForm : Form
+    public partial class Verkopen : Form
     {
-        SqlConnection conn = new SqlConnection("Data Source=housebase.database.windows.net;Initial Catalog=HuizenMarkt;User ID=nhlandriesvdsluis;Password=Welkom!2;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        SQLConn sQLConn = new SQLConn();
+
         SqlCommand command;
         string imgLoc = "";
-        public AdminForm()
+        public Verkopen()
         {
             InitializeComponent();
         }
@@ -29,25 +30,29 @@ namespace WindowsFormsApp3
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            SqlConnection conn = new SqlConnection(sQLConn.connstring());
+
             try
             {
                 OpenFileDialog dlg = new OpenFileDialog();
                 dlg.Filter = "JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif|All Files (*.*)|*.*";
                 dlg.Title = "Select picture";
-                if(dlg.ShowDialog() == DialogResult.OK)
+                if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     imgLoc = dlg.FileName.ToString();
                     housePic.ImageLocation = imgLoc;
-                //https://www.youtube.com/watch?v=BqyAAGMfTD8
+                    //https://www.youtube.com/watch?v=BqyAAGMfTD8
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
         public int MaxId()
         {
+            SqlConnection conn = new SqlConnection(sQLConn.connstring());
+
             int idmax;
             using (SqlCommand myCommand = conn.CreateCommand())
             {
@@ -58,17 +63,25 @@ namespace WindowsFormsApp3
                 conn.Close();
             }
             //int idmax=maxId;
-            return idmax+1;
+            return idmax + 1;
         }
         private void Button1_Click(object sender, EventArgs e)
         {
+            SqlConnection conn = new SqlConnection(sQLConn.connstring());
+
             try
             {
+
                 byte[] img = null;
                 FileStream fs = new FileStream(imgLoc, FileMode.Open, FileAccess.Read);
                 BinaryReader br = new BinaryReader(fs);
                 img = br.ReadBytes((int)fs.Length);
-                string sql = "INSERT INTO Houses(Id,Street,Acres,HouseNR,Rooms,Garage,Price,City,PostCode,YearOfBuilt,AboutHouses,SoortHuis,EnergyLable,GarageCapacity,Image)VALUES("+MaxId()+",'"+street.Text+"','"+acres.Text+"','"+housenr.Text+ "','" + rooms.Text+ "','" + garage.Text+ "','" + price.Text+ "','" + city.Text+ "','" + postcode.Text+ "','" + year.Text+ "','" + about.Text+ "','" + soorthuis.Text+ "','" + energielabel.Text+ "','" + garagecap.Text+ "',@img)";
+                int id = MaxId();
+                if (id == 0)
+                {
+                    id = 1;
+                }
+                string sql = "INSERT INTO Houses(Id,Street,Acres,HouseNR,Rooms,Garage,Price,City,PostCode,YearOfBuilt,AboutHouses,SoortHuis,EnergyLable,GarageCapacity,Image)VALUES(" + id + ",'" + street.Text + "','" + acres.Text + "','" + housenr.Text + "','" + rooms.Text + "','" + garage.Text + "','" + price.Text + "','" + city.Text + "','" + postcode.Text + "','" + year.Text + "','" + about.Text + "','" + soorthuis.Text + "','" + energielabel.Text + "','" + garagecap.Text + "',@img)";
                 if (conn.State != ConnectionState.Open)
                     conn.Open();
                 command = new SqlCommand(sql, conn);
@@ -76,13 +89,14 @@ namespace WindowsFormsApp3
                 int x = command.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show(x.ToString() + " record(s) saved.");
-                AdminForm admin = new AdminForm();
+                Verkopen admin = new Verkopen();
                 this.Hide();
                 admin.Show();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                conn.Close();
             }
         }
 
@@ -94,6 +108,13 @@ namespace WindowsFormsApp3
         private void Garage_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            Selectie s = new Selectie();
+            this.Hide();
+            s.Show();
         }
     }
 }

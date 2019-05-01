@@ -9,9 +9,10 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp3
 {
-    class Login
+    public partial class Login
     {
-        public void LoginAction(string username, string password)
+               
+        public void LoginAction(string username, string password,LoginForm l)
         {
             SqlConnection sqlcon = new SqlConnection(@"Data Source=housebase.database.windows.net;Initial Catalog=HuizenMarkt;User ID=nhlandriesvdsluis;Password=Welkom!2;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             string query = "Select * from Login where username = '" + username + "'and password = '" + password + "'";
@@ -20,11 +21,11 @@ namespace WindowsFormsApp3
             sda.Fill(dtbl);
             if (dtbl.Rows.Count == 1)
             {
+                Session.UserID = username;
                 //als deze if true is hide hij de loginform en word de mainform geopend
-                FormMain objmain = new FormMain();
-                LoginForm LF = new LoginForm();
-                LF.Hide();
-                objmain.Show();
+                Selectie s = new Selectie();
+                l.Hide();
+                s.Show();
             }
             else
             {
