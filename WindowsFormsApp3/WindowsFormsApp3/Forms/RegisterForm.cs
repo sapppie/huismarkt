@@ -9,19 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp3
+namespace HuizenmarktApp
 {
     public partial class RegisterForm : Form
     {
         SqlCommand command;
-        SQLConn sQLConn = new SQLConn();
+        SQLCAC sQLConn = new SQLCAC();
         public RegisterForm()
         {
             InitializeComponent();
         }
         public int MaxId()
         {
-            SqlConnection conn = new SqlConnection(sQLConn.connstring());
+            SqlConnection conn = new SqlConnection(sQLConn.Connstring());
 
             int idmax;
             using (SqlCommand myCommand = conn.CreateCommand())
@@ -38,7 +38,7 @@ namespace WindowsFormsApp3
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(sQLConn.connstring());
+            SqlConnection conn = new SqlConnection(sQLConn.Connstring());
 
             string query = "Select * from Login where username='" + Uname.Text + "'";
             SqlDataAdapter sda = new SqlDataAdapter(query, conn);

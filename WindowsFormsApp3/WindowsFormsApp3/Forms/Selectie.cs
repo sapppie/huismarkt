@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp3
+namespace HuizenmarktApp
 {
     public partial class Selectie : Form
     {
@@ -36,6 +36,13 @@ namespace WindowsFormsApp3
             LoginForm l = new LoginForm();
             this.Hide();
             l.Show();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            viewmyhouse v = new viewmyhouse();
+            this.Hide();
+            v.Show();
         }
     }
 }

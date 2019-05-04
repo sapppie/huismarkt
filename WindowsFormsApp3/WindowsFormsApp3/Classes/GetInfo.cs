@@ -1,35 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp3
+namespace HuizenmarktApp
 {
     class GetInfo
     {
-        string query;
-        SQLConn sQLConn = new SQLConn();
-        House house = new House();
-        public void getAdresses()
+        static SQLCAC sQLConn = new SQLCAC();
+        public static SqlConnection conn = new SqlConnection(sQLConn.Connstring());
+        SqlCommand command;
+
+        public void GetMyHouse()
         {
-            string street  =QueryGet(house.street);
-            string housenr =QueryGet(house.housenr);
-            string city    =QueryGet(house.city);
-            string postcode=QueryGet(house.postcode);
+            
         }
+
+        public void Bid(string id)
+        {
+            string query = "Insert into ";
+            if (conn.State != ConnectionState.Open)
+                conn.Open();
+            command = new SqlCommand(query, conn);
+        }
+        
         public void getHouseInfo()
         {
-            SqlConnection conn = new SqlConnection(sQLConn.connstring());
-            query = "";
-            SqlDataAdapter sda = new SqlDataAdapter(query, conn);
+            
 
         }
         public string QueryGet(string obj)
         {
-            SqlConnection conn = new SqlConnection(sQLConn.connstring());
-
             string query = "Select '"+obj+"' from Houses ";
             SqlDataAdapter sda = new SqlDataAdapter(query, conn);
             return query;

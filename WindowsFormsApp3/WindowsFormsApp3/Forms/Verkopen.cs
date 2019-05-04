@@ -10,12 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp3
+namespace HuizenmarktApp
 {
     public partial class Verkopen : Form
     {
-        SQLConn sQLConn = new SQLConn();
-
+        SQLCAC sQLConn = new SQLCAC();
         SqlCommand command;
         string imgLoc = "";
         public Verkopen()
@@ -23,15 +22,11 @@ namespace WindowsFormsApp3
             InitializeComponent();
         }
 
-        private void TextBox12_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void TextBox12_TextChanged(object sender, EventArgs e){}
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(sQLConn.connstring());
-
+            SqlConnection conn = new SqlConnection(sQLConn.Connstring());
             try
             {
                 OpenFileDialog dlg = new OpenFileDialog();
@@ -51,7 +46,7 @@ namespace WindowsFormsApp3
         }
         public int MaxId()
         {
-            SqlConnection conn = new SqlConnection(sQLConn.connstring());
+            SqlConnection conn = new SqlConnection(sQLConn.Connstring());
 
             int idmax;
             using (SqlCommand myCommand = conn.CreateCommand())
@@ -67,7 +62,7 @@ namespace WindowsFormsApp3
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(sQLConn.connstring());
+            SqlConnection conn = new SqlConnection(sQLConn.Connstring());
 
             try
             {
@@ -100,15 +95,9 @@ namespace WindowsFormsApp3
             }
         }
 
-        private void Label1_Click(object sender, EventArgs e)
-        {
+        private void Label1_Click(object sender, EventArgs e){}
 
-        }
-
-        private void Garage_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void Garage_TextChanged(object sender, EventArgs e){}
 
         private void Button3_Click(object sender, EventArgs e)
         {

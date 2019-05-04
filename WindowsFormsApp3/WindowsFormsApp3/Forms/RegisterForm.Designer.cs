@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp3
+﻿namespace HuizenmarktApp
 {
     partial class RegisterForm
     {

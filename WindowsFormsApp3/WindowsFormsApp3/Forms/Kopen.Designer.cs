@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp3
+﻿namespace HuizenmarktApp
 {
     partial class Kopen
     {
@@ -30,6 +30,7 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.listView = new System.Windows.Forms.ListView();
+            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.City_Header = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AddressHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Postcode_Header = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -56,8 +57,8 @@
             this.typeofhouse = new System.Windows.Forms.TextBox();
             this.acres = new System.Windows.Forms.TextBox();
             this.about = new System.Windows.Forms.RichTextBox();
-            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,6 +94,11 @@
             this.listView.View = System.Windows.Forms.View.Details;
             this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
             // 
+            // Id
+            // 
+            this.Id.Text = "Id";
+            this.Id.Width = 23;
+            // 
             // City_Header
             // 
             this.City_Header.Text = "City";
@@ -114,7 +120,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Kopen";
+            this.button1.Text = "Bieden";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -295,11 +301,6 @@
             this.about.TabIndex = 25;
             this.about.Text = "";
             // 
-            // Id
-            // 
-            this.Id.Text = "Id";
-            this.Id.Width = 23;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(713, 413);
@@ -310,11 +311,21 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(564, 413);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 27;
+            this.button3.Text = "Kopen";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // Kopen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.about);
             this.Controls.Add(this.typeofhouse);
@@ -342,7 +353,7 @@
             this.Controls.Add(this.listView);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Kopen";
-            this.Text = "c";
+            this.Text = "Kopen";
             this.Load += new System.EventHandler(this.Kopen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -382,6 +393,7 @@
         private System.Windows.Forms.RichTextBox about;
         private System.Windows.Forms.ColumnHeader Id;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 

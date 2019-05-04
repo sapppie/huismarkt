@@ -6,16 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp3
+namespace HuizenmarktApp
 {
-    class SQLConn
+    class SQLCAC
     {
-        //public string connstring = @"Data Source=housebase.database.windows.net;Initial Catalog=HuizenMarkt;User ID=nhlandriesvdsluis;Password=Welkom!2;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        public string connstring()
+        public string Connstring()
         {
             return @"Data Source=housebase.database.windows.net;Initial Catalog=HuizenMarkt;User ID=nhlandriesvdsluis;Password=Welkom!2;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         }
-        public SQLConn()
+        public string insertHouse()
+        {
+            //House h = new House();
+            return null;
+        }
+        public SQLCAC()
         {
             //SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
             //DataTable dtbl = new DataTable();
