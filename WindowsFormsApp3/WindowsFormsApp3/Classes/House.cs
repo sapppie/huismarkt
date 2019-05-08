@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HuizenmarktApp
+namespace HuizenmarktApp.nul
 {
-    class House
+    class hHouse
     {
         private static string _id            ;
         private static string _street        ;
@@ -41,7 +41,7 @@ namespace HuizenmarktApp
         public static string Energielable  {get{return _energielable   ;}   set{_energielable   = value;}}
         public static string Garagecapacity {get{return _garagecapacity ;}   set{_garagecapacity = value;}}
         public Byte[] Image         {get{return _image          ;}   set{_image          = value;}}
-        public House(string id, string street, string acres, string housenr, string rooms, string garage, string price, string city, string postcode, string yearofbuilt, string aboutthehouse, string soorthuis, string energielable, string garagecapacity, Byte[] image)
+        public hHouse(string id, string street, string acres, string housenr, string rooms, string garage, string price, string city, string postcode, string yearofbuilt, string aboutthehouse, string soorthuis, string energielable, string garagecapacity, Byte[] image)
         {
             Id = id;
             Street = street;
@@ -81,7 +81,7 @@ namespace HuizenmarktApp
             da.Fill(dt);
             foreach (DataRow dr in dt.Rows)
             {
-                houseList.Add(new House(dr["id"].ToString(), dr["street"].ToString(), dr["acres"].ToString(), dr["housenr"].ToString(), dr["rooms"].ToString(), dr["garage"].ToString(), dr["price"].ToString(), dr["city"].ToString(), dr["postcode"].ToString(), dr["yearofbuilt"].ToString(), dr["abouthouses"].ToString(), dr["soorthuis"].ToString(), dr["energylable"].ToString(), dr["garagecapacity"].ToString(), (Byte[])(dr["Image"])));
+                houseList.Add(new hHouse(dr["id"].ToString(), dr["street"].ToString(), dr["acres"].ToString(), dr["housenr"].ToString(), dr["rooms"].ToString(), dr["garage"].ToString(), dr["price"].ToString(), dr["city"].ToString(), dr["postcode"].ToString(), dr["yearofbuilt"].ToString(), dr["abouthouses"].ToString(), dr["soorthuis"].ToString(), dr["energylable"].ToString(), dr["garagecapacity"].ToString(), (Byte[])(dr["Image"])));
             }
             int i = 0;
             
