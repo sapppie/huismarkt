@@ -60,10 +60,6 @@
             this.postcode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.listView = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -323,34 +319,15 @@
             // 
             // listView
             // 
-            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
+            this.listView.FullRowSelect = true;
+            this.listView.GridLines = true;
             this.listView.Location = new System.Drawing.Point(0, 0);
             this.listView.Name = "listView";
             this.listView.Size = new System.Drawing.Size(491, 170);
             this.listView.TabIndex = 33;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
-            this.listView.SelectedIndexChanged += new System.EventHandler(this.ListView_SelectedIndexChanged_1);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Id";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "City";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Street";
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Postcode";
+            this.listView.SelectedIndexChanged += new System.EventHandler(this.ListView_SelectedIndexChanged);
             // 
             // Kopen
             // 
@@ -430,11 +407,7 @@
         private System.Windows.Forms.TextBox Housenr;
         private System.Windows.Forms.TextBox postcode;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListView listView;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
+        internal System.Windows.Forms.ListView listView;
     }
 }
 

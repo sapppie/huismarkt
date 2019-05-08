@@ -30,7 +30,8 @@ namespace HuizenmarktApp
             //              data = (Byte[])(dr["Image"]);
             //HouseController controller = new HouseController(this, houses);
             filllist();
-
+            HouseController controller = new HouseController(this,houses);
+            controller.LoadView();
             this.ShowDialog();
         }        
 
@@ -51,15 +52,15 @@ namespace HuizenmarktApp
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                int table = 0;                
+                //int table = 0;                
                 foreach (DataRow dr in dt.Rows)
                 {
-                    listView.Items.Add(dr["Id"].ToString());
-                    listView.Items[table].SubItems.Add(dr["City"].ToString());
-                    listView.Items[table].SubItems.Add(dr["Street"].ToString() + " " + dr["HouseNR"].ToString());
-                    listView.Items[table].SubItems.Add(dr["PostCode"].ToString());
+                    //listView.Items.Add(dr["Id"].ToString());
+                    //listView.Items[table].SubItems.Add(dr["City"].ToString());
+                    //listView.Items[table].SubItems.Add(dr["Street"].ToString() + " " + dr["HouseNR"].ToString());
+                    //listView.Items[table].SubItems.Add(dr["PostCode"].ToString());
 
-                    table++;
+                    //table++;
                     houses.Add(new huis(dr["Id"].ToString(), dr["Street"].ToString(), dr["Acres"].ToString(), dr["HouseNR"].ToString(), dr["Rooms"].ToString(), dr["Garage"].ToString(), dr["Price"].ToString(), dr["City"].ToString(), dr["PostCode"].ToString(), dr["Yearofbuilt"].ToString(), dr["AboutHouses"].ToString(), dr["soorthuis"].ToString(), dr["energylable"].ToString(), dr["garagecapacity"].ToString(), data = (Byte[])(dr["Image"])));
 
                 }
@@ -153,12 +154,7 @@ namespace HuizenmarktApp
                 }
             }
         }
-        //private void listView_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-
-            
-
-        //}
+        
 
         public string Street
         {
@@ -267,47 +263,13 @@ namespace HuizenmarktApp
             s.Show();
         }
 
-        private void ListView_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void ListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in listView.SelectedItems)
+            if (this.listView.SelectedItems.Count > 0)
             {
-                int text = Convert.ToInt32(listView.SelectedItems[0].Text);
-                try
-                {
-                    SqlConnection conn = new SqlConnection(sQLConn.Connstring());
-                    String query = str.KopenGetHouseID() + text + "'";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    conn.Open();
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-
-                    foreach (DataRow dr in dt.Rows)
-                    {
-                        city.Text = dr["City"].ToString();
-                        street.Text = dr["Street"].ToString();
-                        Housenr.Text = dr["HouseNR"].ToString();
-                        acres.Text = dr["Acres"].ToString();
-                        year.Text = dr["YearOfBuilt"].ToString();
-                        energylabel.Text = dr["EnergyLable"].ToString();
-                        rooms.Text = dr["Rooms"].ToString();
-                        garage.Text = dr["Garage"].ToString();
-                        spotsavailable.Text = dr["GarageCapacity"].ToString();
-                        typeofhouse.Text = dr["SoortHuis"].ToString();
-                        price.Text = dr["Price"].ToString();
-                        about.Text = dr["AboutHouses"].ToString();
-                        Byte[] data = new Byte[0];
-                        data = (Byte[])(dr["Image"]);
-                        MemoryStream mem = new MemoryStream(data);
-                        pictureBox1.Image = Image.FromStream(mem);
-                    }
-                }
-                catch (Exception es)
-                {
-                    MessageBox.Show(es.Message);
-                }
+                this._controller.SelectedHouseChanged(this.listView.SelectedItems[0].Text);
             }
         }
     }
-}
+    }
+

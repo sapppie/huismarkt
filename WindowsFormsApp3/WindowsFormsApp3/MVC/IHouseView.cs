@@ -19,7 +19,7 @@ namespace HuizenmarktApp.MVC
         string ID             {get;set;}
         string Street         {get;set;}
         string Acres          {get;set;}
-        string HouseNR        { get;set;}
+        string HouseNR        {get;set;}
         string Rooms          {get;set;}
         string Garage         {get;set;}
         string Price          {get;set;}
