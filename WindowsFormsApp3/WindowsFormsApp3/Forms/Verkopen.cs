@@ -16,14 +16,41 @@ namespace HuizenmarktApp
     {
         SQLCAC sQLConn = new SQLCAC();
         SqlCommand command;
+        SQLstrings str = new SQLstrings();
         string imgLoc = "";
         public Verkopen()
         {
             InitializeComponent();
+            GetUsers();
         }
-
+        public static void Popup(string pop)
+        {
+            MessageBox.Show("Teveel karakters in "+pop+". Maximale invoer is 50.");
+        }
         private void TextBox12_TextChanged(object sender, EventArgs e){}
 
+        private void GetUsers()
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(sQLConn.Connstring());
+                String query = str.VerkoopGetUser();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    comboBox1.Items.Add(dr["username"].ToString());
+                }
+                conn.Close();
+            }
+            catch (Exception es)
+            {
+                MessageBox.Show(es.Message);
+            }
+        }
         private void Button2_Click(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(sQLConn.Connstring());
@@ -76,7 +103,7 @@ namespace HuizenmarktApp
                 {
                     id = 1;
                 }
-                string sql = "INSERT INTO Houses(Id,Street,Acres,HouseNR,Rooms,Garage,Price,City,PostCode,YearOfBuilt,AboutHouses,SoortHuis,EnergyLable,GarageCapacity,Image)VALUES(" + id + ",'" + street.Text + "','" + acres.Text + "','" + housenr.Text + "','" + rooms.Text + "','" + garage.Text + "','" + price.Text + "','" + city.Text + "','" + postcode.Text + "','" + year.Text + "','" + about.Text + "','" + soorthuis.Text + "','" + energielabel.Text + "','" + garagecap.Text + "',@img)";
+                string sql = str.VerkoopInsert() + id + ",'" + street.Text + "','" + acres.Text + "','" + housenr.Text + "','" + rooms.Text + "','" + garage.Text + "','" + price.Text + "','" + city.Text + "','" + postcode.Text + "','" + year.Text + "','" + about.Text + "','" + soorthuis.Text + "','" + energielabel.Text + "','" + garagecap.Text + "','"+ comboBox1.Text+"',@img)";
                 if (conn.State != ConnectionState.Open)
                     conn.Open();
                 command = new SqlCommand(sql, conn);
@@ -104,6 +131,11 @@ namespace HuizenmarktApp
             Selectie s = new Selectie();
             this.Hide();
             s.Show();
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

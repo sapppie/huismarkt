@@ -61,12 +61,15 @@ namespace HuizenmarktApp
         }
         public static IList houseList = new ArrayList();
 
+        
+        
         public void HouseInsert()
         {
 
         }
         public static void HouseGet()
         {
+            string[] test;
             SQLCAC sQLConn = new SQLCAC();
             Byte[] image = new Byte[0];
             SqlConnection conn = new SqlConnection(sQLConn.Connstring());
@@ -80,6 +83,10 @@ namespace HuizenmarktApp
             {
                 houseList.Add(new House(dr["id"].ToString(), dr["street"].ToString(), dr["acres"].ToString(), dr["housenr"].ToString(), dr["rooms"].ToString(), dr["garage"].ToString(), dr["price"].ToString(), dr["city"].ToString(), dr["postcode"].ToString(), dr["yearofbuilt"].ToString(), dr["abouthouses"].ToString(), dr["soorthuis"].ToString(), dr["energylable"].ToString(), dr["garagecapacity"].ToString(), (Byte[])(dr["Image"])));
             }
+            int i = 0;
+            
+            
         }
     }
+    
 }

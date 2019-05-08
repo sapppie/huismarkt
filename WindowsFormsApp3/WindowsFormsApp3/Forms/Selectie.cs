@@ -15,8 +15,19 @@ namespace HuizenmarktApp
         public Selectie()
         {
             InitializeComponent();
+            Admin();
         }
-
+        private void Admin()
+            {
+            if (Session.UserID == "Admin")
+            {
+                button2.Show();
+            }
+            else
+            {
+                button2.Hide();
+            }
+        }
         private void Kopen_Click(object sender, EventArgs e)
         {
             Kopen k = new Kopen();

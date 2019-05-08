@@ -9,15 +9,5 @@ namespace HuizenmarktApp
     public static class Session
     {
         public static string UserID;
-        //public static void SessionGet(string user)
-        //{
-        //    UserID = user;
-        //}
-
-        //public static string getuser()
-        //{
-        //    return UserID;
-        //}
-
     }
 }

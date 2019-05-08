@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{04C7FD98-41DA-4E71-8CB1-51ADC072C638}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WindowsFormsApp3</RootNamespace>
-    <AssemblyName>WindowsFormsApp3</AssemblyName>
+    <RootNamespace>HuizenmarktApp</RootNamespace>
+    <AssemblyName>HuizenmarktApp</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -55,7 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVC\HouseController.cs" />
+    <Compile Include="MVC\huis.cs" />
+    <Compile Include="MVC\IHouseView.cs" />
     <Compile Include="Classes\Session.cs" />
+    <Compile Include="Classes\SQLstrings.cs" />
     <Compile Include="Forms\Bid.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +135,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Forms\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>

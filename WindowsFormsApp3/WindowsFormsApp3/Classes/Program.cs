@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HuizenmarktApp.MVC;
 
 namespace HuizenmarktApp
 {
@@ -14,9 +18,17 @@ namespace HuizenmarktApp
         [STAThread]
         static void Main()
         {
+            SQLCAC sQLConn = new SQLCAC();
+            SQLstrings str = new SQLstrings();
+            //HouseController controller;
+            IList houses = new ArrayList();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
+
+
+
         }
+        
     }
 }

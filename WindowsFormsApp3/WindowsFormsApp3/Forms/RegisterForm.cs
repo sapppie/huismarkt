@@ -15,6 +15,7 @@ namespace HuizenmarktApp
     {
         SqlCommand command;
         SQLCAC sQLConn = new SQLCAC();
+        SQLstrings str = new SQLstrings();
         public RegisterForm()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace HuizenmarktApp
             using (SqlCommand myCommand = conn.CreateCommand())
             {
                 conn.Open();
-                myCommand.CommandText = "SELECT MAX(Id) FROM Login";
+                myCommand.CommandText = str.RegisterMaxID();
                 int maxId = Convert.ToInt32(myCommand.ExecuteScalar());
                 idmax = maxId;
                 conn.Close();
@@ -45,7 +46,7 @@ namespace HuizenmarktApp
             DataTable dtbl = new DataTable();
             sda.Fill(dtbl);
             conn.Open();
-            SqlCommand checkusers = new SqlCommand("SELECT COUNT (*) FROM Login WHERE(username = @user)", conn);
+            SqlCommand checkusers = new SqlCommand(str.RegisterCheckUser(), conn);
             checkusers.Parameters.AddWithValue("@user", Uname.Text);
             int UserExist = (int)checkusers.ExecuteScalar();
             conn.Close();
@@ -58,7 +59,7 @@ namespace HuizenmarktApp
             {
                 try
                 {
-                    string sql = "INSERT INTO Login(Id,username,password,email)VALUES(" + MaxId() +",'"+Uname.Text+"','"+Passwd.Text+"','"+Mail.Text+"')";
+                    string sql = str.RegisterInstert(MaxId(),Uname.Text,Passwd.Text,Mail.Text);
                     if (conn.State != ConnectionState.Open)
                         conn.Open();
                     command = new SqlCommand(sql, conn);
