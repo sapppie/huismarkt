@@ -12,6 +12,7 @@ namespace HuizenmarktApp.MVC
         IHouseView _view;
         IList _houses;
         huis _selectedhouse;
+        Byte[] image;
 
         public HouseController(IHouseView view,IList houses)
         {
@@ -83,7 +84,6 @@ namespace HuizenmarktApp.MVC
                 }
             }
         }
-        Byte[] image;
         public void AddNewHouse()
         {
             _selectedhouse = new huis("","","","","","","","","","","","","","",image);

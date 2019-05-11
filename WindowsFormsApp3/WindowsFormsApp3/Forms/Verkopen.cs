@@ -16,7 +16,6 @@ namespace HuizenmarktApp
     {
         SQLCAC sQLConn = new SQLCAC();
         SqlCommand command;
-        SQLstrings str = new SQLstrings();
         string imgLoc = "";
         public Verkopen()
         {
@@ -34,7 +33,7 @@ namespace HuizenmarktApp
             try
             {
                 SqlConnection conn = new SqlConnection(sQLConn.Connstring());
-                String query = str.VerkoopGetUser();
+                String query = SQLstrings.VerkoopGetUser();
                 SqlCommand cmd = new SqlCommand(query, conn);
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -103,7 +102,7 @@ namespace HuizenmarktApp
                 {
                     id = 1;
                 }
-                string sql = str.VerkoopInsert() + id + ",'" + street.Text + "','" + acres.Text + "','" + housenr.Text + "','" + rooms.Text + "','" + garage.Text + "','" + price.Text + "','" + city.Text + "','" + postcode.Text + "','" + year.Text + "','" + about.Text + "','" + soorthuis.Text + "','" + energielabel.Text + "','" + garagecap.Text + "','"+ comboBox1.Text+"',@img)";
+                string sql = SQLstrings.VerkoopInsert() + id + ",'" + street.Text + "','" + acres.Text + "','" + housenr.Text + "','" + rooms.Text + "','" + garage.Text + "','" + price.Text + "','" + city.Text + "','" + postcode.Text + "','" + year.Text + "','" + about.Text + "','" + soorthuis.Text + "','" + energielabel.Text + "','" + garagecap.Text + "','"+ comboBox1.Text+"',@img)";
                 if (conn.State != ConnectionState.Open)
                     conn.Open();
                 command = new SqlCommand(sql, conn);

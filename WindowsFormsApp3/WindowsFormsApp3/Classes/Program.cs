@@ -19,7 +19,6 @@ namespace HuizenmarktApp
         static void Main()
         {
             SQLCAC sQLConn = new SQLCAC();
-            SQLstrings str = new SQLstrings();
             //HouseController controller;
             IList houses = new ArrayList();
             Application.EnableVisualStyles();

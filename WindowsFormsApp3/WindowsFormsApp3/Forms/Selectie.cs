@@ -21,18 +21,21 @@ namespace HuizenmarktApp
             {
             if (Session.UserID == "Admin")
             {
-                button2.Show();
+                this.Show();
             }
             else
             {
-                button2.Hide();
+                this.Hide();
+                Kopen k = new Kopen();
+                k.Show();
             }
         }
         private void Kopen_Click(object sender, EventArgs e)
         {
-            Kopen k = new Kopen();
             this.Hide();
+            Kopen k = new Kopen();
             k.Show();
+
         }
 
         private void Button2_Click(object sender, EventArgs e)

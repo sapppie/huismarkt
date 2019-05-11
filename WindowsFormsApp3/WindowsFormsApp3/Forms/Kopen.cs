@@ -18,18 +18,19 @@ namespace HuizenmarktApp
     public partial class Kopen : Form, IHouseView
     {
         SQLCAC sQLConn = new SQLCAC();
-        SQLstrings str = new SQLstrings();
         HouseController _controller;
         IList houses = new ArrayList();
+        Byte[] data = new Byte[0];
+        public string SelectedHouse;
+        Bid b = new Bid();
+
+
+
         public Kopen()
         {
-
-            // House.HouseGet();
             InitializeComponent();
-
-            //              data = (Byte[])(dr["Image"]);
-            //HouseController controller = new HouseController(this, houses);
             filllist();
+
             HouseController controller = new HouseController(this,houses);
             controller.LoadView();
             this.ShowDialog();
@@ -41,12 +42,11 @@ namespace HuizenmarktApp
         }
         public void filllist()
         {
-            Byte[] data = new Byte[0];
 
             try
             {
                 SqlConnection conn = new SqlConnection(sQLConn.Connstring());
-                String query = str.KopenGetHouses();
+                String query = SQLstrings.KopenGetHouses();
                 SqlCommand cmd = new SqlCommand(query, conn);
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -61,8 +61,11 @@ namespace HuizenmarktApp
                     //listView.Items[table].SubItems.Add(dr["PostCode"].ToString());
 
                     //table++;
-                    houses.Add(new huis(dr["Id"].ToString(), dr["Street"].ToString(), dr["Acres"].ToString(), dr["HouseNR"].ToString(), dr["Rooms"].ToString(), dr["Garage"].ToString(), dr["Price"].ToString(), dr["City"].ToString(), dr["PostCode"].ToString(), dr["Yearofbuilt"].ToString(), dr["AboutHouses"].ToString(), dr["soorthuis"].ToString(), dr["energylable"].ToString(), dr["garagecapacity"].ToString(), data = (Byte[])(dr["Image"])));
-
+                    houses.Add(new huis(dr["Id"].ToString(), dr["Street"].ToString(), dr["Acres"].ToString(), 
+                        dr["HouseNR"].ToString(), dr["Rooms"].ToString(), dr["Garage"].ToString(),
+                        dr["Price"].ToString(), dr["City"].ToString(), dr["PostCode"].ToString(),
+                        dr["Yearofbuilt"].ToString(), dr["AboutHouses"].ToString(), dr["soorthuis"].ToString(),
+                        dr["energylable"].ToString(), dr["garagecapacity"].ToString(), data = (Byte[])(dr["Image"])));
                 }
                 conn.Close();
             }
@@ -154,8 +157,8 @@ namespace HuizenmarktApp
                 }
             }
         }
-        
 
+        #region publicstringsforMVC
         public string Street
         {
             
@@ -254,7 +257,7 @@ namespace HuizenmarktApp
                 MemoryStream mem = new MemoryStream(data);
                 this.pictureBox1.Image = Image.FromStream(mem); }
         }
-
+        #endregion 
 
         private void Button2_Click(object sender, EventArgs e)
         {
@@ -267,9 +270,18 @@ namespace HuizenmarktApp
         {
             if (this.listView.SelectedItems.Count > 0)
             {
-                this._controller.SelectedHouseChanged(this.listView.SelectedItems[0].Text);
+                this._controller.SelectedHouseChanged(listView.SelectedItems[0].Text);
+                b.House = listView.SelectedItems[0].Text;
+                HighestBid.Text = b.MaxBid().ToString();
             }
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            b.Show();
+        }
+
+       
     }
     }
 

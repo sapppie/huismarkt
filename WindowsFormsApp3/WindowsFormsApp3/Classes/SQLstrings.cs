@@ -6,34 +6,38 @@ using System.Threading.Tasks;
 
 namespace HuizenmarktApp
 { 
-    public class SQLstrings
+    public static class SQLstrings
     {
-        public string VerkoopInsert()
+        public static string VerkoopInsert()
         {
             return "INSERT INTO Houses(Id,Street,Acres,HouseNR,Rooms,Garage,Price,City,PostCode,YearOfBuilt,AboutHouses,SoortHuis,EnergyLable,GarageCapacity,username,Image)VALUES(";
         }
-        public string VerkoopGetUser()
+        public static string VerkoopGetUser()
         {
             return "Select username from Login";
         }
 
-        public string KopenGetHouses()
+        public static string KopenGetHouses()
         {
             return "select * from Houses";
         }
-        public string KopenGetHouseID()
+        public static string KopenGetHouseID()
         {
             return "select * from Houses where id='";
         }
-        public string RegisterMaxID()
+        public static string RegisterMaxID()
         {
             return "SELECT MAX(Id) FROM Login";
         }
-        public string RegisterCheckUser()
+        public static string RegisterCheckUser()
         {
             return "SELECT COUNT (*) FROM Login WHERE(username = @user)";
         }
-        public string RegisterInstert(int MaxId,string Uname,string Passwd,string Mail)
+        public static string Insert(string form)
+        {
+            return "INSERT INTO"+form;
+        }
+        public static string RegisterInstert(int MaxId,string Uname,string Passwd,string Mail)
         {
             return "INSERT INTO Login(Id,username,password,email)VALUES(" + MaxId + ",'" + Uname + "','" + Passwd + "','" + Mail + "')";
         }
