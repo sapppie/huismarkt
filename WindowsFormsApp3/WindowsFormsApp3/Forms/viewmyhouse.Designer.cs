@@ -53,7 +53,6 @@
             this.cityz = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.userid = new System.Windows.Forms.Label();
-            this.edit = new System.Windows.Forms.Button();
             this.housenr = new System.Windows.Forms.TextBox();
             this.postcode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,7 +61,7 @@
             // 
             // back
             // 
-            this.back.Location = new System.Drawing.Point(485, 54);
+            this.back.Location = new System.Drawing.Point(486, 5);
             this.back.Name = "back";
             this.back.Size = new System.Drawing.Size(75, 23);
             this.back.TabIndex = 52;
@@ -265,16 +264,6 @@
             this.userid.Size = new System.Drawing.Size(0, 13);
             this.userid.TabIndex = 54;
             // 
-            // edit
-            // 
-            this.edit.Location = new System.Drawing.Point(485, 25);
-            this.edit.Name = "edit";
-            this.edit.Size = new System.Drawing.Size(75, 23);
-            this.edit.TabIndex = 55;
-            this.edit.Text = "Verander";
-            this.edit.UseVisualStyleBackColor = true;
-            this.edit.Click += new System.EventHandler(this.Edit_Click);
-            // 
             // housenr
             // 
             this.housenr.Location = new System.Drawing.Point(219, 325);
@@ -306,7 +295,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.postcode);
             this.Controls.Add(this.housenr);
-            this.Controls.Add(this.edit);
             this.Controls.Add(this.userid);
             this.Controls.Add(this.back);
             this.Controls.Add(this.about);
@@ -333,6 +321,7 @@
             this.Controls.Add(this.cityz);
             this.Controls.Add(this.pictureBox1);
             this.Name = "viewmyhouse";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "viewmyhouse";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -367,7 +356,6 @@
         private System.Windows.Forms.Label cityz;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label userid;
-        private System.Windows.Forms.Button edit;
         private System.Windows.Forms.TextBox housenr;
         private System.Windows.Forms.TextBox postcode;
         private System.Windows.Forms.Label label1;

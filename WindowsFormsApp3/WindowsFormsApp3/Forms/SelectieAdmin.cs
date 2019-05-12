@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HuizenmarktApp
 {
-    public partial class Selectie : Form
+    public partial class SelectieAdmin : Form
     {
-        public Selectie()
+        public SelectieAdmin()
         {
             InitializeComponent();
             
@@ -24,11 +24,11 @@ namespace HuizenmarktApp
             Kopen k = new Kopen();
             k.Show();
 
-        }        
+        }
 
-        private void Button1_Click_1(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
-            viewmyhouse v = new viewmyhouse();
+            Verkopen v = new Verkopen();
             this.Hide();
             v.Show();
         }
@@ -38,6 +38,20 @@ namespace HuizenmarktApp
             LoginForm l = new LoginForm();
             this.Hide();
             l.Show();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            viewmyhouse v = new viewmyhouse();
+            this.Hide();
+            v.Show();
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            Delete d = new Delete();
+            this.Hide();
+            d.Show();
         }
     }
 }

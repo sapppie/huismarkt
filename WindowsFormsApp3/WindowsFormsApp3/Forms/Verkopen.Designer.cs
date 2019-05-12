@@ -371,6 +371,7 @@
             this.Controls.Add(this.housenr);
             this.Controls.Add(this.acres);
             this.Name = "Verkopen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Verkopen";
             ((System.ComponentModel.ISupportInitialize)(this.housePic)).EndInit();
             this.ResumeLayout(false);

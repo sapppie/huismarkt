@@ -81,6 +81,7 @@
             this.Controls.Add(this.BidButton);
             this.Controls.Add(this.BidValue);
             this.Name = "Bid";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bid";
             this.ResumeLayout(false);
             this.PerformLayout();

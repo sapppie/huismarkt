@@ -26,18 +26,20 @@ namespace HuizenmarktApp
         }
         public void LoginAction(string username, string password, LoginForm l)
         {
-            SqlConnection sqlcon = new SqlConnection(@"Data Source=housebase.database.windows.net;Initial Catalog=HuizenMarkt;User ID=nhlandriesvdsluis;Password=Welkom!2;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            string query = "Select * from Login where username = '" + this.username + "'and password = '" + this.password + "'";
-            SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+            SqlConnection sqlcon = new SqlConnection(SQLCAC.Connstring());
+            SqlDataAdapter sda = new SqlDataAdapter(SQLCAC.GetUserFromDB(this.username,this.password), sqlcon);
             DataTable dtbl = new DataTable();
             sda.Fill(dtbl);
+
+            //als deze if true is hide hij de loginform en word de mainform geopend
             if (dtbl.Rows.Count == 1)
             {
                 Session.UserID = this.username;
-                //als deze if true is hide hij de loginform en word de mainform geopend
-                Selectie s = new Selectie();
-                l.Hide();
-                s.Show();
+                if(this.username == "Admin")
+                { l.SelectionAdmin(); }
+                else
+                { l.Selection(); }
+                
             }
             else
             {

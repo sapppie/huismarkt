@@ -18,18 +18,17 @@ namespace HuizenmarktApp
             InitializeComponent();
         }
         public string House;
-        SQLCAC sQLConn;
         SqlCommand command;
 
         public int MaxId()
         {
-            SqlConnection conn = new SqlConnection(@"Data Source = housebase.database.windows.net; Initial Catalog = HuizenMarkt; User ID = nhlandriesvdsluis; Password = Welkom!2; Connect Timeout = 30; Encrypt = True; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+            SqlConnection conn = new SqlConnection(SQLCAC.Connstring());
 
             int idmax;
             using (SqlCommand myCommand = conn.CreateCommand())
             {
                 conn.Open();
-                myCommand.CommandText = "SELECT MAX(Id) FROM Bidding";
+                myCommand.CommandText = SQLCAC.BidMaxID();
                 int maxId = Convert.ToInt32(myCommand.ExecuteScalar());
                 idmax = maxId;
                 conn.Close();
@@ -39,11 +38,10 @@ namespace HuizenmarktApp
         }
         public int MaxBid()
         {
-            SqlConnection conn = new SqlConnection(@"Data Source = housebase.database.windows.net; Initial Catalog = HuizenMarkt; User ID = nhlandriesvdsluis; Password = Welkom!2; Connect Timeout = 30; Encrypt = True; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+            SqlConnection conn = new SqlConnection(SQLCAC.Connstring());
 
             conn.Open();
-            string sql = "SELECT Bid FROM Bidding Where House='" + House + "'";
-            using (SqlCommand myCommand =new SqlCommand(sql,conn))
+            using (SqlCommand myCommand =new SqlCommand(SQLCAC.BidGet(House), conn))
             {
                 using (SqlDataReader reader = myCommand.ExecuteReader())
                 {
@@ -54,7 +52,7 @@ namespace HuizenmarktApp
                         conn.Close();
                         conn.Open();
 
-                        myCommand.CommandText = "SELECT MAX(Bid) FROM Bidding Where House='" + House + "'";
+                        myCommand.CommandText = SQLCAC.BidGetMaxBid(House);
 
                         int maxId = Convert.ToInt32(myCommand.ExecuteScalar());
                         bidmax = maxId;
@@ -79,8 +77,8 @@ namespace HuizenmarktApp
         }
         private void BidButton_Click(object sender, EventArgs e)
         {
-            SQLstrings.KopenGetHouseID();
-            SqlConnection conn = new SqlConnection(@"Data Source = housebase.database.windows.net; Initial Catalog = HuizenMarkt; User ID = nhlandriesvdsluis; Password = Welkom!2; Connect Timeout = 30; Encrypt = True; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+            SQLCAC.KopenGetHouseID();
+            SqlConnection conn = new SqlConnection(SQLCAC.Connstring());
 
             try
             {
@@ -91,10 +89,9 @@ namespace HuizenmarktApp
                 {
                     id = 1;
                 }
-                string sql = "INSERT INTO Bidding(ID,USERNAME,HOUSE,BID)Values("+id+",'"+user+"','"+House+"','"+BidValue.Text+"')";
                 if (conn.State != ConnectionState.Open)
                     conn.Open();
-                command = new SqlCommand(sql, conn);
+                command = new SqlCommand(SQLCAC.BidInsert(id, user, House, BidValue.Text), conn);
                 int x = command.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show(x.ToString() + " record(s) saved.");

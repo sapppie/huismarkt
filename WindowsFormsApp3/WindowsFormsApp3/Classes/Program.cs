@@ -18,14 +18,11 @@ namespace HuizenmarktApp
         [STAThread]
         static void Main()
         {
-            SQLCAC sQLConn = new SQLCAC();
             //HouseController controller;
             IList houses = new ArrayList();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
-
-
 
         }
         

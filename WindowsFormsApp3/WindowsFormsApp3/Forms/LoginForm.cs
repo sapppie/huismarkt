@@ -24,6 +24,19 @@ namespace HuizenmarktApp
             string password = PassText.Text.Trim();
             Login l = new Login(username,password,this);
         }
+        public void Selection()
+        {
+            Hide();
+
+            Selectie s = new Selectie();
+            s.Show();
+        }
+        public void SelectionAdmin()
+        {
+            Hide();
+            SelectieAdmin sa = new SelectieAdmin();
+            sa.Show();
+        }
 
         private void PassText_TextChanged(object sender, EventArgs e) { }
         private void button2_Click(object sender, EventArgs e){this.Close();}

@@ -14,7 +14,6 @@ namespace HuizenmarktApp
 {
     public partial class Verkopen : Form
     {
-        SQLCAC sQLConn = new SQLCAC();
         SqlCommand command;
         string imgLoc = "";
         public Verkopen()
@@ -22,9 +21,9 @@ namespace HuizenmarktApp
             InitializeComponent();
             GetUsers();
         }
-        public static void Popup(string pop)
+        public static void Popup(string pop,int size)
         {
-            MessageBox.Show("Teveel karakters in "+pop+". Maximale invoer is 50.");
+            MessageBox.Show("Teveel karakters in "+pop+". Maximale invoer is "+size+".");
         }
         private void TextBox12_TextChanged(object sender, EventArgs e){}
 
@@ -32,8 +31,8 @@ namespace HuizenmarktApp
         {
             try
             {
-                SqlConnection conn = new SqlConnection(sQLConn.Connstring());
-                String query = SQLstrings.VerkoopGetUser();
+                SqlConnection conn = new SqlConnection(SQLCAC.Connstring());
+                String query = SQLCAC.VerkoopGetUser();
                 SqlCommand cmd = new SqlCommand(query, conn);
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -52,7 +51,7 @@ namespace HuizenmarktApp
         }
         private void Button2_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(sQLConn.Connstring());
+            SqlConnection conn = new SqlConnection(SQLCAC.Connstring());
             try
             {
                 OpenFileDialog dlg = new OpenFileDialog();
@@ -72,7 +71,7 @@ namespace HuizenmarktApp
         }
         public int MaxId()
         {
-            SqlConnection conn = new SqlConnection(sQLConn.Connstring());
+            SqlConnection conn = new SqlConnection(SQLCAC.Connstring());
 
             int idmax;
             using (SqlCommand myCommand = conn.CreateCommand())
@@ -88,7 +87,7 @@ namespace HuizenmarktApp
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(sQLConn.Connstring());
+            SqlConnection conn = new SqlConnection(SQLCAC.Connstring());
 
             try
             {
@@ -102,7 +101,7 @@ namespace HuizenmarktApp
                 {
                     id = 1;
                 }
-                string sql = SQLstrings.VerkoopInsert() + id + ",'" + street.Text + "','" + acres.Text + "','" + housenr.Text + "','" + rooms.Text + "','" + garage.Text + "','" + price.Text + "','" + city.Text + "','" + postcode.Text + "','" + year.Text + "','" + about.Text + "','" + soorthuis.Text + "','" + energielabel.Text + "','" + garagecap.Text + "','"+ comboBox1.Text+"',@img)";
+                string sql = SQLCAC.VerkoopInsert() + id + ",'" + street.Text + "','" + acres.Text + "','" + housenr.Text + "','" + rooms.Text + "','" + garage.Text + "','" + price.Text + "','" + city.Text + "','" + postcode.Text + "','" + year.Text + "','" + about.Text + "','" + soorthuis.Text + "','" + energielabel.Text + "','" + garagecap.Text + "','"+ comboBox1.Text+"',@img)";
                 if (conn.State != ConnectionState.Open)
                     conn.Open();
                 command = new SqlCommand(sql, conn);

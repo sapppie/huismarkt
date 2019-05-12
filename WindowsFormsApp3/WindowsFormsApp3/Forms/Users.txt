@@ -1,0 +1,5 @@
+﻿Username: Admin
+Password: Welkom!2
+
+Username: Andries
+Password: Welkom!2

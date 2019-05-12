@@ -1,6 +1,6 @@
 ﻿namespace HuizenmarktApp
 {
-    partial class Kopen
+    partial class Delete
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.cityz = new System.Windows.Forms.Label();
             this.streetwithnumberz = new System.Windows.Forms.Label();
             this.acresz = new System.Windows.Forms.Label();
@@ -52,16 +51,14 @@
             this.typeofhouse = new System.Windows.Forms.TextBox();
             this.acres = new System.Windows.Forms.TextBox();
             this.about = new System.Windows.Forms.RichTextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.IDtxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Housenr = new System.Windows.Forms.TextBox();
             this.postcode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.listView = new System.Windows.Forms.ListView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.HighestBid = new System.Windows.Forms.Label();
+            this.DEL = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,16 +71,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(902, 314);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Bieden";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // cityz
             // 
@@ -262,26 +249,6 @@
             this.about.TabIndex = 25;
             this.about.Text = "";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(578, 313);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "Terug";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(497, 312);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 27;
-            this.button3.Text = "Kopen";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
-            // 
             // IDtxt
             // 
             this.IDtxt.Location = new System.Drawing.Point(133, 176);
@@ -334,38 +301,39 @@
             this.listView.View = System.Windows.Forms.View.Details;
             this.listView.SelectedIndexChanged += new System.EventHandler(this.ListView_SelectedIndexChanged);
             // 
-            // label3
+            // DEL
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(698, 319);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(116, 13);
-            this.label3.TabIndex = 34;
-            this.label3.Text = "Hoogste bod bedraagt:";
+            this.DEL.BackColor = System.Drawing.Color.Red;
+            this.DEL.Location = new System.Drawing.Point(878, 312);
+            this.DEL.Name = "DEL";
+            this.DEL.Size = new System.Drawing.Size(99, 30);
+            this.DEL.TabIndex = 36;
+            this.DEL.Text = "DEL";
+            this.DEL.UseVisualStyleBackColor = false;
+            this.DEL.Click += new System.EventHandler(this.DEL_Click);
             // 
-            // HighestBid
+            // button2
             // 
-            this.HighestBid.AutoSize = true;
-            this.HighestBid.Location = new System.Drawing.Point(820, 319);
-            this.HighestBid.Name = "HighestBid";
-            this.HighestBid.Size = new System.Drawing.Size(31, 13);
-            this.HighestBid.TabIndex = 35;
-            this.HighestBid.Text = "none";
+            this.button2.Location = new System.Drawing.Point(797, 316);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 26;
+            this.button2.Text = "Terug";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // Kopen
+            // Delete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(986, 343);
-            this.Controls.Add(this.HighestBid);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.DEL);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.postcode);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Housenr);
             this.Controls.Add(this.IDtxt);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.about);
             this.Controls.Add(this.typeofhouse);
@@ -389,9 +357,8 @@
             this.Controls.Add(this.acresz);
             this.Controls.Add(this.streetwithnumberz);
             this.Controls.Add(this.cityz);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "Kopen";
+            this.Name = "Delete";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kopen";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -403,7 +370,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label cityz;
         private System.Windows.Forms.Label streetwithnumberz;
         private System.Windows.Forms.Label acresz;
@@ -426,16 +392,14 @@
         private System.Windows.Forms.TextBox typeofhouse;
         private System.Windows.Forms.TextBox acres;
         private System.Windows.Forms.RichTextBox about;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox IDtxt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox Housenr;
         private System.Windows.Forms.TextBox postcode;
         private System.Windows.Forms.Label label2;
         internal System.Windows.Forms.ListView listView;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label HighestBid;
+        private System.Windows.Forms.Button DEL;
+        private System.Windows.Forms.Button button2;
     }
 }
 

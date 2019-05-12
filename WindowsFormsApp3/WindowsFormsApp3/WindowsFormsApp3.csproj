@@ -59,7 +59,6 @@
     <Compile Include="MVC\huis.cs" />
     <Compile Include="MVC\IHouseView.cs" />
     <Compile Include="Classes\Session.cs" />
-    <Compile Include="Classes\SQLstrings.cs" />
     <Compile Include="Forms\Bid.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,8 +89,20 @@
     <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\GetInfo.cs" />
-    <Compile Include="Unneeded cmponents\House.cs" />
+    <Compile Include="Forms\Delete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Delete.Designer.cs">
+      <DependentUpon>Delete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Geen Observer Geimplementeerd. Hier wel een voorbeeld\Observer.cs" />
+    <Compile Include="Forms\SelectieAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectieAdmin.Designer.cs">
+      <DependentUpon>SelectieAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Geen Observer Geimplementeerd. Hier wel een voorbeeld\Subject.cs" />
     <Compile Include="Classes\Login.cs" />
     <Compile Include="Classes\Program.cs" />
     <Compile Include="Forms\viewmyhouse.cs">
@@ -101,7 +112,6 @@
       <DependentUpon>viewmyhouse.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Classes\Register.cs" />
     <Compile Include="Forms\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +136,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\viewmyhouse.resx">
       <DependentUpon>viewmyhouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Delete.resx">
+      <DependentUpon>Delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectieAdmin.resx">
+      <DependentUpon>SelectieAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -159,6 +175,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Forms\Users.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

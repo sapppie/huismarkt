@@ -22,7 +22,7 @@ namespace HuizenmarktApp.MVC
             set
             {
                 if (value.Length > 50)
-                    Verkopen.Popup("Straat");
+                    Verkopen.Popup("Straat",50);
                 else
                 {
                     _street = value;
@@ -36,7 +36,7 @@ namespace HuizenmarktApp.MVC
             set
             {
                 if (value.Length > 5)
-                    Verkopen.Popup("Hectare");
+                    Verkopen.Popup("Hectare",5);
                 else
                 {
                     _acres = value;
@@ -51,7 +51,7 @@ namespace HuizenmarktApp.MVC
             set
             {
                 if (value.Length > 100)
-                    Verkopen.Popup("Huisnummer");
+                    Verkopen.Popup("Huisnummer",100);
                 else
                 {
                     _housenr = value;
@@ -65,7 +65,7 @@ namespace HuizenmarktApp.MVC
             set
             {
                 if (value.Length > 10)
-                    Verkopen.Popup("Kamers");
+                    Verkopen.Popup("Kamers",10);
                 else
                 {
                     _rooms = value;
@@ -79,7 +79,7 @@ namespace HuizenmarktApp.MVC
             set
             {
                 if (value.Length > 50)
-                    Verkopen.Popup("Hectare");
+                    Verkopen.Popup("Hectare",50);
                 else
                 {
                     _garage = value;
@@ -93,7 +93,7 @@ namespace HuizenmarktApp.MVC
             set
             {
                 if (value.Length > 50)
-                    Verkopen.Popup("Prijs");
+                    Verkopen.Popup("Prijs",50);
                 else
                 {
                     _price = value;
@@ -107,7 +107,7 @@ namespace HuizenmarktApp.MVC
             set
             {
                 if (value.Length > 50)
-                    Verkopen.Popup("Stad/Dorp");
+                    Verkopen.Popup("Stad/Dorp",50);
                 else
                 {
                     _city = value;
@@ -120,8 +120,8 @@ namespace HuizenmarktApp.MVC
             get { return _postcode; }
             set
             {
-                if (value.Length > 50)
-                    Verkopen.Popup("Postcode");
+                if (value.Length > 8)
+                    Verkopen.Popup("Postcode",8);
                 else
                 {
                     _postcode = value;
@@ -134,8 +134,8 @@ namespace HuizenmarktApp.MVC
             get { return _yearofbuilt; }
             set
             {
-                if (value.Length > 50)
-                    Verkopen.Popup("Bouwjaar");
+                if (value.Length > 5)
+                    Verkopen.Popup("Bouwjaar",5);
                 else
                 {
                     _yearofbuilt = value;
@@ -149,7 +149,7 @@ namespace HuizenmarktApp.MVC
             set
             {
                 if (value.Length > 100)
-                    Verkopen.Popup("Over het huis");
+                    Verkopen.Popup("Over het huis",100);
                 else
                 {
                     _aboutthehouse = value;
@@ -163,7 +163,7 @@ namespace HuizenmarktApp.MVC
             set
             {
                 if (value.Length > 50)
-                    Verkopen.Popup("Soorthuis");
+                    Verkopen.Popup("Soorthuis",50);
                 else
                 {
                     _soorthuis = value;
@@ -177,7 +177,7 @@ namespace HuizenmarktApp.MVC
             set
             {
                 if (value.Length > 50)
-                    Verkopen.Popup("energie lable");
+                    Verkopen.Popup("energie lable",50);
                 else
                 {
                     _energielable = value;
@@ -191,7 +191,7 @@ namespace HuizenmarktApp.MVC
             set
             {
                 if (value.Length > 50)
-                    Verkopen.Popup("Garage plaatsen");
+                    Verkopen.Popup("Garage plaatsen",50);
                 else
                 {
                     _garagecapacity = value;

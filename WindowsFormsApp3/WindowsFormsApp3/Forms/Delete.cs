@@ -14,16 +14,18 @@ using HuizenmarktApp.MVC;
 
 namespace HuizenmarktApp
 {
-    public partial class Kopen : Form, IHouseView
+    public partial class Delete : Form, IHouseView
     {
         HouseController _controller;
         IList houses = new ArrayList();
         Byte[] data = new Byte[0];
         public string SelectedHouse;
         Bid b = new Bid();
+        public string Idofhouse;
 
 
-        public Kopen()
+
+        public Delete()
         {
             InitializeComponent();
             filllist();
@@ -35,7 +37,7 @@ namespace HuizenmarktApp
 
         }
         
-
+        
 
         public void SetController(HouseController controller)
         {
@@ -43,8 +45,6 @@ namespace HuizenmarktApp
         }
         public void filllist()
         {
-            
-
             try
             {
 
@@ -57,7 +57,7 @@ namespace HuizenmarktApp
                 //int table = 0;                
                 foreach (DataRow dr in dt.Rows)
                 {
-                    houses.Add(new huis(dr["Id"].ToString(), dr["Street"].ToString(), dr["Acres"].ToString(), 
+                    houses.Add(new huis(dr["Id"].ToString(), dr["Street"].ToString(), dr["Acres"].ToString(),
                         dr["HouseNR"].ToString(), dr["Rooms"].ToString(), dr["Garage"].ToString(),
                         dr["Price"].ToString(), dr["City"].ToString(), dr["PostCode"].ToString(),
                         dr["Yearofbuilt"].ToString(), dr["AboutHouses"].ToString(), dr["soorthuis"].ToString(),
@@ -75,8 +75,7 @@ namespace HuizenmarktApp
         {
             //Define Columns in grid
             this.listView.Columns.Clear();
-
-            this.listView.Columns.Add("ID", 50, HorizontalAlignment.Left);
+            this.listView.Columns.Add("ID", 150, HorizontalAlignment.Left);
             this.listView.Columns.Add("City", 200, HorizontalAlignment.Left);
             this.listView.Columns.Add("Address", 150, HorizontalAlignment.Left);
             this.listView.Columns.Add("Postcode", 150, HorizontalAlignment.Left);
@@ -260,16 +259,13 @@ namespace HuizenmarktApp
             Selectie s = new Selectie();
             this.Hide();
             s.Show();
-
         }
-
         private void ListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView.SelectedItems.Count > 0)
             {
                 this._controller.SelectedHouseChanged(listView.SelectedItems[0].Text);
-                b.House = listView.SelectedItems[0].Text;
-                HighestBid.Text = b.MaxBid().ToString();
+                Idofhouse = listView.SelectedItems[0].Text;
             }
         }
 
@@ -280,12 +276,16 @@ namespace HuizenmarktApp
         
         private void DEL_Click(object sender, EventArgs e)
         {
-            
-        }
+            try
+            {
+                SQLCAC.Execute(SQLCAC.DeleteHouse(Idofhouse));
+                MessageBox.Show("Deleted");
+                this._controller.RemoveHouse();
+            }
+            catch (Exception es) {
+                MessageBox.Show(es.Message);
 
-        private void Button3_Click(object sender, EventArgs e)
-        {
-
+            }
         }
     }
     }
